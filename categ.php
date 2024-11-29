@@ -12,7 +12,7 @@ if ($result->num_rows > 0) {
 
 
   while($row = $result->fetch_assoc()) {
-	echo "<button id='catbtn' type='button' value=". $row['cat_id'] ." onclick='addItem()'>" . $row['cat_name'] . "</button><br/>";
+	echo "<button id='catbtn' type='button' value=". $row['cat_id'] ." onclick='addItem(". $row['cat_id'] .")'>" . $row['cat_name'] . "</button><br/>";
   }
 } else {
   echo "0 results";
