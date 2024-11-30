@@ -12,7 +12,7 @@ xmlhttp.onreadystatechange=function() {
 if (this.readyState==4 && this.status==200) {
       document.getElementById("menulist").innerHTML=this.responseText;
    }
-}
+};
 xmlhttp.open("GET","menu.php",true);
 xmlhttp.send();
 
@@ -59,6 +59,27 @@ function addItem(str) {
 </script>
 
 
+<script>
+function remItem(str) {
+  if (str == "") {
+    document.getElementById("cview").innerHTML = "";
+    return;
+  } else {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("cview").innerHTML = this.responseText;
+      }
+    };
+    xmlhttp.open("GET","remcat.php?r="+str,true);
+    xmlhttp.send();
+  }
+}
+
+</script>
+
+
+
 </head>
 
 
@@ -76,10 +97,27 @@ function addItem(str) {
 
 
 <div id="calc"><br/>
-<div id="cview"></div>
+<div id="cview"></div><br/>
+<input id="recip" type="button" onclick="printDiv('cview')" value="RECEIPT" />
 </div>
 
 </div>
+
+
+<script>
+
+function printDiv(divId) {
+     var printContents = document.getElementById(divId).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+}
+
+</script>
 
 </body>
 </html>

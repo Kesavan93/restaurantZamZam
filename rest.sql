@@ -1,58 +1,57 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Server version:               5.1.72-community - MySQL Community Server (GPL)
--- Server OS:                    Win32
--- HeidiSQL Version:             10.2.0.5599
+-- Server version:               8.0.30 - MySQL Community Server - GPL
+-- Server OS:                    Win64
+-- HeidiSQL Version:             12.1.0.6537
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
 -- Dumping database structure for restoran
-CREATE DATABASE IF NOT EXISTS `restoran` /*!40100 DEFAULT CHARACTER SET latin1 */;
+CREATE DATABASE IF NOT EXISTS `restoran` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `restoran`;
 
 -- Dumping structure for table restoran.addon
 CREATE TABLE IF NOT EXISTS `addon` (
-  `addon_id` int(3) NOT NULL AUTO_INCREMENT,
+  `addon_id` int NOT NULL AUTO_INCREMENT,
   `addon_name` varchar(100) NOT NULL,
   `addon_price` varchar(100) NOT NULL,
   PRIMARY KEY (`addon_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table restoran.addon: 0 rows
-/*!40000 ALTER TABLE `addon` DISABLE KEYS */;
-/*!40000 ALTER TABLE `addon` ENABLE KEYS */;
+-- Dumping data for table restoran.addon: ~0 rows (approximately)
 
 -- Dumping structure for table restoran.calc
 CREATE TABLE IF NOT EXISTS `calc` (
-  `calc_id` int(8) NOT NULL AUTO_INCREMENT,
+  `calc_id` int NOT NULL AUTO_INCREMENT,
   `calc_cat_id` varchar(50) NOT NULL,
   `calc_name` varchar(100) NOT NULL,
-  `calc_price` varchar(100) NOT NULL,
+  `calc_price` decimal(10,2) NOT NULL,
   `calc_qty` varchar(100) NOT NULL,
-  `calc_total` varchar(100) NOT NULL,
+  `calc_total` decimal(10,2) NOT NULL,
   PRIMARY KEY (`calc_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table restoran.calc: 0 rows
-/*!40000 ALTER TABLE `calc` DISABLE KEYS */;
-/*!40000 ALTER TABLE `calc` ENABLE KEYS */;
+-- Dumping data for table restoran.calc: ~0 rows (approximately)
 
 -- Dumping structure for table restoran.category
 CREATE TABLE IF NOT EXISTS `category` (
-  `cat_id` int(4) NOT NULL AUTO_INCREMENT,
+  `cat_id` int NOT NULL AUTO_INCREMENT,
   `cat_menu_id` varchar(50) NOT NULL,
   `cat_name` varchar(100) NOT NULL,
   `cat_price` varchar(100) NOT NULL,
   PRIMARY KEY (`cat_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=115 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=115 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table restoran.category: 114 rows
-/*!40000 ALTER TABLE `category` DISABLE KEYS */;
+-- Dumping data for table restoran.category: ~114 rows (approximately)
 INSERT INTO `category` (`cat_id`, `cat_menu_id`, `cat_name`, `cat_price`) VALUES
 	(1, '1', 'Nasi Goreng Biasa', '7.00'),
 	(2, '1', 'Nasi Goreng Ikan Masin', '7.50'),
@@ -168,17 +167,15 @@ INSERT INTO `category` (`cat_id`, `cat_menu_id`, `cat_name`, `cat_price`) VALUES
 	(112, '16', 'Nasi Lemak Ayam', '8.50'),
 	(113, '16', 'Nasi Lemak Daging', '8.50'),
 	(114, '16', 'Nasi Lemak Sotong', '8.00');
-/*!40000 ALTER TABLE `category` ENABLE KEYS */;
 
 -- Dumping structure for table restoran.menu
 CREATE TABLE IF NOT EXISTS `menu` (
-  `menu_id` int(3) NOT NULL AUTO_INCREMENT,
-  `menu_name` varchar(100) DEFAULT NULL,
+  `menu_id` int NOT NULL AUTO_INCREMENT,
+  `menu_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`menu_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table restoran.menu: 16 rows
-/*!40000 ALTER TABLE `menu` DISABLE KEYS */;
+-- Dumping data for table restoran.menu: ~16 rows (approximately)
 INSERT INTO `menu` (`menu_id`, `menu_name`) VALUES
 	(1, 'Nasi Goreng'),
 	(2, 'Tom Yam'),
@@ -196,20 +193,19 @@ INSERT INTO `menu` (`menu_id`, `menu_name`) VALUES
 	(14, 'Roti'),
 	(15, 'Thosai'),
 	(16, 'Nasi Lemak');
-/*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 
 -- Dumping structure for table restoran.modifier
 CREATE TABLE IF NOT EXISTS `modifier` (
-  `modi_id` int(3) NOT NULL AUTO_INCREMENT,
+  `modi_id` int NOT NULL AUTO_INCREMENT,
   `modi_name` varchar(50) NOT NULL,
   `modi_price` varchar(50) NOT NULL,
   PRIMARY KEY (`modi_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table restoran.modifier: 0 rows
-/*!40000 ALTER TABLE `modifier` DISABLE KEYS */;
-/*!40000 ALTER TABLE `modifier` ENABLE KEYS */;
+-- Dumping data for table restoran.modifier: ~0 rows (approximately)
 
+/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
